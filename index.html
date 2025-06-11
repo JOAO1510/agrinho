@@ -1,1 +1,58 @@
+class Agricultor:
+    def __init__(self, nome):
+        self.nome = nome
+        self.culturas = {}
+
+    def adicionar_cultura(self, tipo, quantidade):
+        if tipo in self.culturas:
+            self.culturas[tipo] += quantidade
+        else:
+            self.culturas[tipo] = quantidade
+
+    def listar_culturas(self):
+        print(f"\n{self.nome}, suas culturas são:")
+        for tipo, quantidade in self.culturas.items():
+            print(f"- {tipo}: {quantidade} kg")
+
+    def dicas_sustentabilidade(self):
+        dicas = [
+            "1. Utilize compostagem para fertilizar suas plantas.",
+            "2. Pratique o plantio direto para conservar o solo.",
+            "3. Faça rotação de culturas para manter a saúde do solo.",
+            "4. Utilize a recognição de pragas biológicas em vez de pesticidas químicos."
+        ]
+        print("\nDicas para uma agricultura sustentável:")
+        for dica in dicas:
+            print(dica)
+
+
+def main():
+    nome_agricultor = input("Digite seu nome: ")
+    agricultor = Agricultor(nome_agricultor)
+
+    while True:
+        acao = input("\nEscolha uma ação: (1) Adicionar cultura (2) Listar culturas (3) Dicas de sustentabilidade (4) Sair: ")
+
+        if acao == '1':
+            tipo = input("Digite o tipo de cultura: ")
+            quantidade = float(input("Digite a quantidade (em kg): "))
+            agricultor.adicionar_cultura(tipo, quantidade)
+            print(f"Cultura de {tipo} adicionada com sucesso!")
+
+        elif acao == '2':
+            agricultor.listar_culturas()
+
+        elif acao == '3':
+            agricultor.dicas_sustentabilidade()
+
+        elif acao == '4':
+            print("Saindo do programa...")
+            break
+
+        else:
+            print("Ação inválida. Tente novamente.")
+
+
+if __name__ == "__main__":
+    main()
 
